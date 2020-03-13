@@ -170,7 +170,7 @@ public class MyLinkedList<T> implements List<T> {
 
         Cover result = firstItem;
         while (index-- > 0)
-            result = firstItem.next;
+            result = result.next;
         return result.item;
     }
 
@@ -217,4 +217,19 @@ public class MyLinkedList<T> implements List<T> {
         return true;
     }
 
+    public boolean copy(Collection<? super T> c){
+        c.clear();
+        // return c.addAll(this); - для ArrayList надо, чтобы toArray было реализовано
+        for(T item : this)
+            c.add(item);
+        return true;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        for(T item : this)
+            result.append(item).append(" ");
+        return result.toString();
+    }
 }
